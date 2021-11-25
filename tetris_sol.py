@@ -5,6 +5,7 @@ import random
 # BLOCK CLASS
 ############################################################
 
+
 class Block(Rectangle):
     ''' Block class:
         Implement a block for a tetris piece
@@ -136,7 +137,7 @@ class Shape(object):
         for block in self.blocks:
             x = center.x - d*center.y + d*block.y
             y = center.y + d*center.x - d*block.x
-            if not board.can_move(x,y):
+            if not board.can_move(x, y):
                 return False
         return True
 
@@ -158,15 +159,13 @@ class Shape(object):
             dy = y - block.y
             block.move(dx, dy)
 
-        ### This should be at the END of your rotate code.
-        ### DO NOT touch it. Default behavior is that a piece will only shift
-        ### rotation direction after a successful rotation.  This ensures that
-        ### pieces which switch rotations definitely remain within their
-        ### accepted rotation positions.
+        # This should be at the END of your rotate code.
+        # DO NOT touch it. Default behavior is that a piece will only shift
+        # rotation direction after a successful rotation.  This ensures that
+        # pieces which switch rotations definitely remain within their
+        # accepted rotation positions.
         if self.shift_rotation_dir:
             self.rotation_dir *= -1
-
-
 
 
 ############################################################
@@ -177,7 +176,7 @@ class Shape(object):
 class I_shape(Shape):
     def __init__(self, center):
         coords = [Point(center.x - 1, center.y),
-                  Point(center.x    , center.y),
+                  Point(center.x, center.y),
                   Point(center.x + 1, center.y),
                   Point(center.x + 2, center.y)]
         Shape.__init__(self, coords, 'blue')
@@ -185,29 +184,32 @@ class I_shape(Shape):
         self.rotation_dir = -1
         self.shift_rotation_dir = True
 
+
 class J_shape(Shape):
     def __init__(self, center):
         coords = [Point(center.x - 1, center.y),
-                  Point(center.x    , center.y),
+                  Point(center.x, center.y),
                   Point(center.x + 1, center.y),
                   Point(center.x + 1, center.y + 1)]
         Shape.__init__(self, coords, 'orange')
         self.center_block = self.blocks[1]
 
+
 class L_shape(Shape):
     def __init__(self, center):
         coords = [Point(center.x - 1, center.y),
-                  Point(center.x    , center.y),
+                  Point(center.x, center.y),
                   Point(center.x + 1, center.y),
                   Point(center.x - 1, center.y + 1)]
         Shape.__init__(self, coords, 'cyan')
         self.center_block = self.blocks[1]
 
+
 class O_shape(Shape):
     def __init__(self, center):
-        coords = [Point(center.x    , center.y),
+        coords = [Point(center.x, center.y),
                   Point(center.x - 1, center.y),
-                  Point(center.x    , center.y + 1),
+                  Point(center.x, center.y + 1),
                   Point(center.x - 1, center.y + 1)]
         Shape.__init__(self, coords, 'red')
         self.center_block = self.blocks[0]
@@ -215,35 +217,37 @@ class O_shape(Shape):
     def rotate(self, board):
         return
 
+
 class S_shape(Shape):
     def __init__(self, center):
-        coords = [Point(center.x    , center.y),
-                  Point(center.x    , center.y + 1),
+        coords = [Point(center.x, center.y),
+                  Point(center.x, center.y + 1),
                   Point(center.x + 1, center.y),
                   Point(center.x - 1, center.y + 1)]
         Shape.__init__(self, coords, 'green')
         self.center_block = self.blocks[0]
         self.shift_rotation_dir = True
 
+
 class T_shape(Shape):
     def __init__(self, center):
         coords = [Point(center.x - 1, center.y),
-                  Point(center.x    , center.y),
+                  Point(center.x, center.y),
                   Point(center.x + 1, center.y),
-                  Point(center.x    , center.y + 1)]
+                  Point(center.x, center.y + 1)]
         Shape.__init__(self, coords, 'yellow')
         self.center_block = self.blocks[1]
+
 
 class Z_shape(Shape):
     def __init__(self, center):
         coords = [Point(center.x - 1, center.y),
-                  Point(center.x    , center.y),
-                  Point(center.x    , center.y + 1),
+                  Point(center.x, center.y),
+                  Point(center.x, center.y + 1),
                   Point(center.x + 1, center.y + 1)]
         Shape.__init__(self, coords, 'magenta')
         self.center_block = self.blocks[1]
         self.shift_rotation_dir = True
-
 
 
 ############################################################
@@ -265,7 +269,7 @@ class Board(object):
         self.height = height
 
         # create a canvas to draw the tetris shapes on
-        #self.canvas = CanvasFrame(win, self.width * Block.BLOCK_SIZE,
+        # self.canvas = CanvasFrame(win, self.width * Block.BLOCK_SIZE,
         #                                self.height * Block.BLOCK_SIZE)
         self.canvas = win
         self.canvas.setBackground('light gray')
@@ -305,7 +309,7 @@ class Board(object):
             return False
 
         # check if there is already a block
-        if (x,y) in self.grid:
+        if (x, y) in self.grid:
             return False
 
         return True
@@ -415,14 +419,14 @@ class WTPTetris(object):
     '''
 
     SHAPES = [I_shape, J_shape, L_shape, O_shape, S_shape, T_shape, Z_shape]
-    DIRECTION = {'Left':(-1, 0), 'Right':(1, 0), 'Down':(0, 1)}
+    DIRECTION = {'Left': (-1, 0), 'Right': (1, 0), 'Down': (0, 1)}
     BOARD_WIDTH = 10
     BOARD_HEIGHT = 20
 
     def __init__(self, win):
         self.board = Board(win, self.BOARD_WIDTH, self.BOARD_HEIGHT)
         self.win = win
-        self.delay = 1000 #ms
+        self.delay = 1000  # ms
 
         # sets up the keyboard events
         # when a key is called the method key_pressed will be called
@@ -531,6 +535,9 @@ class WTPTetris(object):
 # Start the game
 ################################################################
 
-win = GraphWin("Tetris", WTPTetris.BOARD_WIDTH * Block.BLOCK_SIZE, WTPTetris.BOARD_HEIGHT * Block.BLOCK_SIZE)
+
+win = GraphWin("Tetris", WTPTetris.BOARD_WIDTH * Block.BLOCK_SIZE,
+               WTPTetris.BOARD_HEIGHT * Block.BLOCK_SIZE)
+
 game = WTPTetris(win)
 win.mainloop()

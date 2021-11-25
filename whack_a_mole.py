@@ -32,7 +32,8 @@ class WhackAMole:
         self.mole_frame, self.status_frame = self.create_frames()
 
         self.mole_photo = ImageTk.PhotoImage(Image.open('mole.gif'))
-        self.mole_cover_photo = ImageTk.PhotoImage(Image.open('mole_cover.jpg'))
+        self.mole_cover_photo = ImageTk.PhotoImage(
+            Image.open('mole_cover.jpg'))
         self.label_timers = {}
 
         self.mole_labels = self.create_moles()
@@ -60,7 +61,8 @@ class WhackAMole:
             row_of_labels = []
             for c in range(WhackAMole.NUM_MOLES_ACROSS):
                 mole_label = tk.Label(self.mole_frame, image=self.mole_photo)
-                mole_label.grid(row=r, column=c, sticky=tk.E + tk.W + tk.N + tk.S)
+                mole_label.grid(row=r, column=c,
+                                sticky=tk.E + tk.W + tk.N + tk.S)
                 self.label_timers[id(mole_label)] = None
 
                 row_of_labels.append(mole_label)
@@ -128,10 +130,12 @@ class WhackAMole:
             hit_label = event.widget
             if str(hit_label['image']) == str(self.mole_cover_photo):
                 # MISSED! Update the miss counter
-                self.miss_counter['text'] = str(int(self.miss_counter['text']) + 1)
+                self.miss_counter['text'] = str(
+                    int(self.miss_counter['text']) + 1)
             else:
                 # HIT! Update the hit counter
-                self.hit_counter['text'] = str(int(self.hit_counter['text']) + 1)
+                self.hit_counter['text'] = str(
+                    int(self.hit_counter['text']) + 1)
                 # Remove the mole and don't update the miss counter
                 self.put_down_mole(hit_label, False)
 
@@ -172,7 +176,8 @@ class WhackAMole:
         if self.game_is_running:
             if timer_expired:
                 # The mole is going down before it was clicked on, so update the miss counter
-                self.miss_counter['text'] = str(int(self.miss_counter['text']) + 1)
+                self.miss_counter['text'] = str(
+                    int(self.miss_counter['text']) + 1)
             else:
                 # The timer did not expire, so manually stop the timer
                 the_label.after_cancel(self.label_timers[id(the_label)])
@@ -183,7 +188,8 @@ class WhackAMole:
             # Set a call to pop up the mole in the future
             time_down = randint(WhackAMole.MIN_TIME_DOWN,
                                 WhackAMole.MAX_TIME_DOWN)
-            timer_object = the_label.after(time_down, self.pop_up_mole, the_label)
+            timer_object = the_label.after(
+                time_down, self.pop_up_mole, the_label)
             # Remember the timer object so it can be canceled later, if need be
             self.label_timers[id(the_label)] = timer_object
 
@@ -199,7 +205,8 @@ class WhackAMole:
             self.label_timers[id(the_label)] = timer_object
 
     def quit(self):
-        really_quit = messagebox.askyesno('Quiting?', 'Do you really want to quit?')
+        really_quit = messagebox.askyesno(
+            'Quitting?', 'Do you really want to quit?')
         if really_quit:
             self.window.destroy()
 

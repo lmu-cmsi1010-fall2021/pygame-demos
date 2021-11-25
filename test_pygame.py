@@ -10,8 +10,8 @@ import random
 def things_dodged(count):
     """Displays the number of dodged objects."""
     font = pygame.font.SysFont('comicsansms', 25)
-    text = font.render('Dodged: '+str(count), True, black)
-    gameDisplay.blit(text,(0,0))
+    text = font.render('Dodged: ' + str(count), True, black)
+    gameDisplay.blit(text, (0, 0))
 
 
 def things(thingx, thingy, thingw, thingh, color):
@@ -19,9 +19,9 @@ def things(thingx, thingy, thingw, thingh, color):
     pygame.draw.rect(gameDisplay, color, [thingx, thingy, thingw, thingh])
 
 
-def car(x,y):
+def car(x, y):
     """Draws the racecar."""
-    gameDisplay.blit(carImg,(x,y))
+    gameDisplay.blit(carImg, (x, y))
 
 
 def text_objects(text, font):
@@ -36,9 +36,9 @@ def crash():
     pygame.mixer.Sound.play(crash_sound)
     pygame.mixer.music.stop()
     ####################################
-    largeText = pygame.font.SysFont('comicsansms',115)
+    largeText = pygame.font.SysFont('comicsansms', 115)
     TextSurf, TextRect = text_objects('You Crashed', largeText)
-    TextRect.center = ((display_width/2),(display_height/2))
+    TextRect.center = ((display_width/2), (display_height/2))
     gameDisplay.blit(TextSurf, TextRect)
 
     while True:
@@ -47,27 +47,27 @@ def crash():
                 pygame.quit()
                 quit()
 
-        button('Play Again',150,450,100,50,green,bright_green,game_loop)
-        button('Quit',550,450,100,50,red,bright_red,quitgame)
+        button('Play Again', 150, 450, 100, 50, green, bright_green, game_loop)
+        button('Quit', 550, 450, 100, 50, red, bright_red, quitgame)
 
         pygame.display.update()
         clock.tick(15)
 
 
-def button(msg,x,y,w,h,ic,ac,action=None):
+def button(msg, x, y, w, h, ic, ac, action=None):
     """Displays buttons for the user to click."""
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
 
     if x+w > mouse[0] > x and y+h > mouse[1] > y:
-        pygame.draw.rect(gameDisplay, ac,(x,y,w,h))
+        pygame.draw.rect(gameDisplay, ac, (x, y, w, h))
         if click[0] == 1 and action != None:
             action()
     else:
-        pygame.draw.rect(gameDisplay, ic,(x,y,w,h))
-    smallText = pygame.font.SysFont('comicsansms',20)
+        pygame.draw.rect(gameDisplay, ic, (x, y, w, h))
+    smallText = pygame.font.SysFont('comicsansms', 20)
     textSurf, textRect = text_objects(msg, smallText)
-    textRect.center = ( (x+(w/2)), (y+(h/2)) )
+    textRect.center = ((x+(w/2)), (y+(h/2)))
     gameDisplay.blit(textSurf, textRect)
 
 
@@ -89,9 +89,9 @@ def paused():
     ############
     pygame.mixer.music.pause()
     #############
-    largeText = pygame.font.SysFont('comicsansms',115)
+    largeText = pygame.font.SysFont('comicsansms', 115)
     TextSurf, TextRect = text_objects('Paused', largeText)
-    TextRect.center = ((display_width/2),(display_height/2))
+    TextRect.center = ((display_width/2), (display_height/2))
     gameDisplay.blit(TextSurf, TextRect)
 
     while pause:
@@ -100,8 +100,8 @@ def paused():
                 pygame.quit()
                 quit()
 
-        button('Continue',150,450,100,50,green,bright_green,unpause)
-        button('Quit',550,450,100,50,red,bright_red,quitgame)
+        button('Continue', 150, 450, 100, 50, green, bright_green, unpause)
+        button('Quit', 550, 450, 100, 50, red, bright_red, quitgame)
 
         pygame.display.update()
         clock.tick(15)
@@ -117,13 +117,13 @@ def game_intro():
                 quit()
 
         gameDisplay.fill(white)
-        largeText = pygame.font.SysFont('comicsansms',115)
+        largeText = pygame.font.SysFont('comicsansms', 115)
         TextSurf, TextRect = text_objects('A bit Racey', largeText)
-        TextRect.center = ((display_width/2),(display_height/2))
+        TextRect.center = ((display_width / 2), (display_height / 2))
         gameDisplay.blit(TextSurf, TextRect)
 
-        button('GO!',150,450,100,50,green,bright_green,game_loop)
-        button('Quit',550,450,100,50,red,bright_red,quitgame)
+        button('GO!', 150, 450, 100, 50, green, bright_green, game_loop)
+        button('Quit', 550, 450, 100, 50, red, bright_red, quitgame)
 
         pygame.display.update()
         clock.tick(15)
@@ -172,10 +172,11 @@ def game_loop():
         x += x_change
         gameDisplay.fill(white)
 
-        things(thing_startx, thing_starty, thing_width, thing_height, block_color)
+        things(thing_startx, thing_starty,
+               thing_width, thing_height, block_color)
 
         thing_starty += thing_speed
-        car(x,y)
+        car(x, y)
         things_dodged(dodged)
 
         if x > display_width - car_width or x < 0:
@@ -183,7 +184,7 @@ def game_loop():
 
         if thing_starty > display_height:
             thing_starty = 0 - thing_height
-            thing_startx = random.randrange(0,display_width)
+            thing_startx = random.randrange(0, display_width)
             dodged += 1
             thing_speed += 1
             thing_width += (dodged * 1.2)
@@ -207,20 +208,20 @@ crash_sound = pygame.mixer.Sound('crash.wav')
 display_width = 800
 display_height = 600
 
-black = (0,0,0)
-white = (255,255,255)
+black = (0, 0, 0)
+white = (255, 255, 255)
 
-red = (200,0,0)
-green = (0,200,0)
+red = (200, 0, 0)
+green = (0, 200, 0)
 
-bright_red = (255,0,0)
-bright_green = (0,255,0)
+bright_red = (255, 0, 0)
+bright_green = (0, 255, 0)
 
-block_color = (53,115,255)
+block_color = (53, 115, 255)
 
 car_width = 73
 
-gameDisplay = pygame.display.set_mode((display_width,display_height))
+gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('A bit Racey')
 clock = pygame.time.Clock()
 
