@@ -20,7 +20,8 @@ class Counter_program():
         # - - - - - - - - - - - - - - - - - - - - -
         # The Commands frame
         # cmd_frame = ttk.LabelFrame(self.window, text="Commands", padx=5, pady=5, relief=tk.RIDGE)
-        cmd_frame = ttk.LabelFrame(self.window, text="Commands", relief=tk.RIDGE)
+        cmd_frame = ttk.LabelFrame(
+            self.window, text="Commands", relief=tk.RIDGE)
         cmd_frame.grid(row=1, column=1, sticky=tk.E + tk.W + tk.N + tk.S)
 
         button_label = ttk.Label(cmd_frame, text="tk.Button")
@@ -64,7 +65,8 @@ class Counter_program():
         my_text.grid(row=2, column=2)
         my_text.insert(tk.END, "An example of multi-line\ninput")
 
-        my_spinbox = tk.Spinbox(entry_frame, from_=0, to=10, width=5, justify=tk.RIGHT)
+        my_spinbox = tk.Spinbox(entry_frame, from_=0,
+                                to=10, width=5, justify=tk.RIGHT)
         my_spinbox.grid(row=3, column=2, sticky=tk.W, pady=3)
 
         my_scale = tk.Scale(entry_frame, from_=0, to=100, orient=tk.HORIZONTAL,
@@ -78,8 +80,10 @@ class Counter_program():
 
     # - - - - - - - - - - - - - - - - - - - - -
         # The Choices frame
-        switch_frame = ttk.LabelFrame(self.window, text="Choices", relief=tk.RIDGE, padding=6)
-        switch_frame.grid(row=2, column=2, padx=6, sticky=tk.E + tk.W + tk.N + tk.S)
+        switch_frame = ttk.LabelFrame(
+            self.window, text="Choices", relief=tk.RIDGE, padding=6)
+        switch_frame.grid(row=2, column=2, padx=6,
+                          sticky=tk.E + tk.W + tk.N + tk.S)
 
         checkbox_label = ttk.Label(switch_frame, text="ttk.Checkbutton")
         checkbox_label.grid(row=1, rowspan=3, column=1, sticky=tk.W + tk.N)
@@ -111,7 +115,8 @@ class Counter_program():
         # The Choosing from lists frame
         fromlist_frame = ttk.LabelFrame(self.window, text="Choosing from a list",
                                         relief=tk.RIDGE)
-        fromlist_frame.grid(row=1, column=2, sticky=tk.E + tk.W + tk.N + tk.S, padx=6)
+        fromlist_frame.grid(row=1, column=2, sticky=tk.E +
+                            tk.W + tk.N + tk.S, padx=6)
 
         listbox_label = tk.Label(fromlist_frame, text="tk.Listbox")
         listbox_label.grid(row=1, column=1, sticky=tk.W + tk.N)
@@ -125,9 +130,11 @@ class Counter_program():
         my_listbox.grid(row=1, column=2)
 
         self.combobox_value = tk.StringVar()
-        my_combobox = ttk.Combobox(fromlist_frame, height=4, textvariable=self.combobox_value)
+        my_combobox = ttk.Combobox(
+            fromlist_frame, height=4, textvariable=self.combobox_value)
         my_combobox.grid(row=2, column=2)
-        my_combobox['values'] = ("Choice one", "Choice two", "Choice three", "Choice four")
+        my_combobox['values'] = (
+            "Choice one", "Choice two", "Choice three", "Choice four")
         my_combobox.current(0)
 
         # - - - - - - - - - - - - - - - - - - - - -
@@ -136,7 +143,8 @@ class Counter_program():
 
         filemenu = tk.Menu(menubar, tearoff=0)
         filemenu.add_command(label="Open", command=filedialog.askopenfilename)
-        filemenu.add_command(label="Save", command=filedialog.asksaveasfilename)
+        filemenu.add_command(
+            label="Save", command=filedialog.asksaveasfilename)
         filemenu.add_separator()
         filemenu.add_command(label="Exit", command=self.window.quit)
         menubar.add_cascade(label="File", menu=filemenu)
@@ -145,8 +153,10 @@ class Counter_program():
 
         # - - - - - - - - - - - - - - - - - - - - -
         # Quit button in the lower right corner
-        quit_button = ttk.Button(self.window, text="Quit", command=self.window.destroy)
+        quit_button = ttk.Button(
+            self.window, text="Quit", command=self.window.destroy)
         quit_button.grid(row=1, column=3)
+
 
 # Create the entire GUI program
 program = Counter_program()
