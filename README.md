@@ -23,6 +23,9 @@ Finally, the most broad-based basic game support can be found by installing the 
 
 These four are all independent alternatives to creating game-like programs in Python. If you prefer to stay with something you have used before and don’t mind not having music or sound, staying with _graphics.py_ will suffice. If you want to learn just enough additional code to handle images, you can use Pillow. However if you want all of the above _plus_ music/sound, and are willing to learn some new library code, PyGame would be the way to go.
 
+## Set Yourself Up for Experimentation
+If you want to modify and push your modifications to GitHub, you will need to _fork_ this repository. This will create your own personal copy which you can then clone as usual. Click on _Fork_ button near the top-right of https://github.com/lmu-cmsi1010-fall2021/python-game-demos in order to create a forked copy for yourself.
+
 ## Tkinter Demos
 If you have been able to run the _graphics.py_ exercises from the problem sets, then you will be able to run the Tkinter demos without further setup:
 
@@ -36,24 +39,50 @@ Silent games are possible with just _graphics.py_. For convenience, this file is
 
     python3 tetris_sol.py
 
+Full documentation on _graphics.py_ can be found here: https://mcsp.wartburg.edu/zelle/python/graphics/graphics.pdf
+
 As long as _graphics.py_ is in the same folder as _tetris_sol.py_, the game should work. Use the ⬅️/➡️ keys to move a falling piece; the ⬆️ key rotates it; the <kbd>space bar</kbd> drops it.
 
 Note, this is for demo purposes only: you may encounter bugs! (which may be just as educational as the working code itself 😁)
 
-## Required Library: PyGame
-PyGame is a Python library that is not included with most standard installations of Python. As such, it needs to be installed separately. There are many ways to install a Python library so if you know of others and prefer those, feel free to use them. If you are new to installing third-party libraries, _pip_ with the `user` option is a safe way to do so: the `user` option ensures that the library is saved as part of _your_ user account’s files, avoiding administrator passwords and possible interference with operating system files.
+## Pillow Demo: _whack_a_mole.py_
+This is an implementation of Whack-a-Mole, using images to represent hidden and uncovered moles via the Pillow library. This makes it easy to swap out the graphics without having to change the code!
 
-### Windows
+### Required Library for Whack-a-Mole Demo: Pillow
+Pillow is not included with most standard installations of Python. As such, it needs to be installed separately. There are many ways to install a Python library so if you know of others and prefer those, feel free to use them. If you are new to installing third-party libraries, _pip_ with the `user` option is a safe way to do so: the `user` option ensures that the library is saved as part of _your_ user account’s files, avoiding administrator passwords and possible interference with operating system files.
+
+#### Windows
+
+    py –m pip install –U Pillow -user
+
+#### macOS
+
+    python3 –m pip install –U Pillow --user
+
+If the exact command doesn’t appear to work, try to replace `py` or `python3` with the Python command you’ve been using.
+
+### Hammer Time!
+With the Pillow library installed, the game should be fairly self-explanatory once you run it:
+
+    python3 whack_a_mole.py
+
+## PyGame Demos: `chimp` and _test_pygame.py_
+For full game support including audio/music, [PyGame](https://www.pygame.org) is a viable option. Some self-teaching is involved since it’s optional for the class, but the time investment may be well worth it if games are your jam.
+
+### Required Library: PyGame
+PyGame is not included with most standard installations of Python. As such, it needs to be installed separately. There are many ways to install a Python library so if you know of others and prefer those, feel free to use them. If you are new to installing third-party libraries, _pip_ with the `user` option is a safe way to do so: the `user` option ensures that the library is saved as part of _your_ user account’s files, avoiding administrator passwords and possible interference with operating system files.
+
+#### Windows
 
     py –m pip install –U pygame -user
 
-### macOS
+#### macOS
 
     python3 –m pip install –U pygame --user
 
 If the exact command doesn’t appear to work, try to replace `py` or `python3` with the Python command you’ve been using.
 
-## Quick Start: `chimp`
+### Quick Start: `chimp`
 If you want to try something out right away, the PyGame library comes with a built-in example called `chimp`. In fact, you don’t need _any_ extra code to run it; it’s already in PyGame! Do this:
 
     python3 –m pygame.examples.chimp
@@ -64,17 +93,13 @@ An article on how `chimp` works can be found here: https://www.pygame.org/docs/t
 
 The code for `chimp` can be seen here: https://www.pygame.org/docs/tut/chimp.py.html
 
-## Set Yourself Up for Experimentation
-If you want to modify and push your modifications to GitHub, you will need to _fork_ this repository. This will create your own personal copy which you can then clone as usual. Click on _Fork_ button near the top-right of https://github.com/lmu-cmsi1010-fall2021/pygame-demos in order to create a forked copy for yourself.
+### Code Included: _test_pygame.py_
+The included PyGame test code implements a racecar-like game (so it’s just “A bit Racey”) with music and sound effects! How many barriers can you dodge before crashing?
 
-## Required Library for Whack-a-Mole Demo: Pillow
-If you would like to play with the Whack-a-Mole demo, you will need an additional library called Pillow. Installing it via _pip_ with the `user` option is similar to PyGame; just change the library name.
+    python3 test_pygame.py
 
-### Windows
+A tutorial, with videos, that walks you through this program can be found here: https://pythonprogramming.net/pygame-python-3-part-1-intro
 
-    py –m pip install –U Pillow -user
+(this is a multipage tutorial so don’t hesitate to click to the next one at the bottom if you want to keep learning more)
 
-### macOS
-
-    python3 –m pip install –U Pillow --user
-
+Note how these libraries all make use of classes and objects, which is why we couldn’t really introduce these libraries until we got to this point. Make sure to review classes, objects, methods, and inheritance if you’re having trouble with any of these libraries.
