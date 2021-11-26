@@ -66,6 +66,8 @@ With the Pillow library installed, the game should be fairly self-explanatory on
 
     python3 whack_a_mole.py
 
+More information on this implementation (with different image files) can be found here: https://runestone.academy/runestone/books/published/thinkcspy/GUIandEventDrivenProgramming/11_gui_program_example.html
+
 ## PyGame Demos: `chimp` and _test_pygame.py_
 For full game support including audio/music, [PyGame](https://www.pygame.org) is a viable option. Some self-teaching is involved since it’s optional for the class, but the time investment may be well worth it if games are your jam.
 
