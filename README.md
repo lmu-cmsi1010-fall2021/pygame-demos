@@ -76,18 +76,18 @@ PyGame is not included with most standard installations of Python. As such, it n
 
 #### Windows
 
-    py –m pip install –U pygame -user
+    py -m pip install -U pygame -user
 
 #### macOS
 
-    python3 –m pip install –U pygame --user
+    python3 -m pip install -U pygame --user
 
 If the exact command doesn’t appear to work, try to replace `py` or `python3` with the Python command you’ve been using.
 
 ### Quick Start: `chimp`
 If you want to try something out right away, the PyGame library comes with a built-in example called `chimp`. In fact, you don’t need _any_ extra code to run it; it’s already in PyGame! Do this:
 
-    python3 –m pygame.examples.chimp
+    python3 -m pygame.examples.chimp
 
 (substitute `python3` with your Python command if it’s different)
 
